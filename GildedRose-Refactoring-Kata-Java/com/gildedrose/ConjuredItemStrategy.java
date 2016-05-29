@@ -7,7 +7,7 @@ package com.gildedrose;
 public class ConjuredItemStrategy implements ItemStrategy {
 
     @Override
-    public Item updateQuality(Item item) {
+    public Item updateItem(Item item) {
         int newQuality = sellInIsNotPassed(item) ? item.quality -2 : item.quality -4;
 
         if(isQualityNegative(newQuality)) {

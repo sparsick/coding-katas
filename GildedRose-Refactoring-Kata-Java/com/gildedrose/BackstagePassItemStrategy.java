@@ -7,7 +7,7 @@ package com.gildedrose;
 public class BackstagePassItemStrategy implements ItemStrategy {
 
     @Override
-    public Item updateQuality(Item item) {
+    public Item updateItem(Item item) {
         int newQuality;
 
         if(sellInIsPassed(item)) {

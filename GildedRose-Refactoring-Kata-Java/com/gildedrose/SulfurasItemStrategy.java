@@ -7,7 +7,7 @@ package com.gildedrose;
 public class SulfurasItemStrategy implements ItemStrategy {
 
     @Override
-    public Item updateQuality(Item item) {
+    public Item updateItem(Item item) {
         return item;
     }
 }

@@ -6,6 +6,6 @@ package com.gildedrose;
  */
 public interface ItemStrategy {
 
-    Item updateQuality(Item item);
+    Item updateItem(Item item);
 
 }

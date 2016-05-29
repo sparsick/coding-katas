@@ -7,7 +7,7 @@ package com.gildedrose;
 public class NormalItemStrategy implements ItemStrategy {
 
     @Override
-    public Item updateQuality(Item item) {
+    public Item updateItem(Item item) {
         int newQuality = sellInIsNotPassed(item) ? item.quality - 1 : item.quality - 2;
 
         if (isQualityNegative(newQuality)) {

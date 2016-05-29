@@ -7,7 +7,7 @@ package com.gildedrose;
 public class AgedBrieItemStrategy implements ItemStrategy {
 
     @Override
-    public Item updateQuality(Item item) {
+    public Item updateItem(Item item) {
         int newQuality = sellInIsPassed(item) ? item.quality + 2 : item.quality + 1;
 
         if(isQualityGreaterThanFifty(newQuality)) {
