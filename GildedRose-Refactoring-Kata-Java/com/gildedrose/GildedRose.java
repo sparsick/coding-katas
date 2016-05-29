@@ -6,9 +6,7 @@ import java.util.Map;
 class GildedRose {
     Item[] items;
 
-    ItemStrategy itemStrategy = new ItemStrategy();
-
-    static Map<String, IItemStrategy> itemStrategyMap = new HashMap<>();
+    static Map<String, ItemStrategy> itemStrategyMap = new HashMap<>();
 
     static {
         itemStrategyMap.put("Aged Brie", new AgedBrieItemStrategy());
@@ -23,8 +21,8 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            IItemStrategy iItemStrategy = itemStrategyMap.getOrDefault(items[i].name, new NormalItemStrategy());
-            items[i] = iItemStrategy.updateQuality(items[i]);
+            ItemStrategy itemStrategy = itemStrategyMap.getOrDefault(items[i].name, new NormalItemStrategy());
+            items[i] = itemStrategy.updateQuality(items[i]);
         }
     }
 }

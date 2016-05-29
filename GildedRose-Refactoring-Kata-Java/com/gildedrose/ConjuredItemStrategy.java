@@ -4,7 +4,7 @@ package com.gildedrose;
  * @author sparsick
  * @since 29.05.16
  */
-public class ConjuredItemStrategy implements IItemStrategy {
+public class ConjuredItemStrategy implements ItemStrategy {
 
     @Override
     public Item updateQuality(Item item) {

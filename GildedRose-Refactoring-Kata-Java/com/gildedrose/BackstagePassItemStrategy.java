@@ -4,7 +4,7 @@ package com.gildedrose;
  * @author sparsick
  * @since 29.05.16
  */
-public class BackstagePassItemStrategy implements IItemStrategy {
+public class BackstagePassItemStrategy implements ItemStrategy {
 
     @Override
     public Item updateQuality(Item item) {
