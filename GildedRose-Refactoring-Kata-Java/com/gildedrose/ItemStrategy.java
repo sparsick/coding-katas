@@ -22,4 +22,8 @@ public class ItemStrategy {
         return new Item(item.name, item.sellIn - 1, newQuality);
     }
 
+    public Item updateQualityForSulfurasItem(Item item) {
+        return item;
+    }
+
 }

@@ -14,6 +14,9 @@ class GildedRose {
             if("Aged Brie".equals(items[i].name)) {
                 items[i] = itemStrategy.updateQualityForAgedBrieItem(items[i]);
                 continue;
+            } else if ("Sulfuras, Hand of Ragnaros".equals(items[i].name)) {
+                items[i] = itemStrategy.updateQualityForSulfurasItem(items[i]);
+                continue;
             }
 
             if (!items[i].name.equals("Aged Brie")
