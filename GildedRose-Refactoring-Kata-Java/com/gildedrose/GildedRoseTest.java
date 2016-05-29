@@ -78,7 +78,17 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void increaseQualityTwicedForAgedBrieItemAndSellInIsPassed() {
+    public void qualityCannotBeGreaterThan50() {
+        Item[] items = new Item[] { new Item("Aged Brie", 2, 50) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
+    public void increaseQualityTwicedForAgedBrieItemBecauseSellInIsPassed() {
         Item[] items = new Item[] { new Item("Aged Brie", -2, 1) };
         GildedRose app = new GildedRose(items);
 
