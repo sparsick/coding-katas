@@ -148,6 +148,16 @@ public class GildedRoseTest {
     }
 
     @Test
+    public void checkQualityCannotBeGreaterThan50ForBackstagePasses10Daysleft() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
     public void checkQualityForBackstagePasses5Daysleft() {
         Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10) };
         GildedRose app = new GildedRose(items);
@@ -155,6 +165,16 @@ public class GildedRoseTest {
         app.updateQuality();
 
         assertEquals(13, app.items[0].quality);
+    }
+
+    @Test
+    public void checkQualityCannotBeGreaterThan50ForBackstagePasses5Daysleft() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(50, app.items[0].quality);
     }
 
     @Test
