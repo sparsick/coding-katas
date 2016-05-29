@@ -7,84 +7,24 @@ package com.gildedrose;
 public class ItemStrategy {
 
     public Item updateQualityForAgedBrieItem(Item item) {
-        int newQuality = sellInIsPassed(item) ? item.quality + 2 : item.quality + 1;
-
-        if(isQualityGreaterThanFifty(newQuality)) {
-            newQuality = 50;
-        }
-
-        return new Item(item.name, item.sellIn - 1, newQuality);
+        return new AgedBrieItemStrategy().updateQuality(item);
     }
 
     public Item updateQualityForSulfurasItem(Item item) {
-        return item;
+        return new SulfurasItemStrategy().updateQuality(item);
     }
 
     public Item updateQualityForBackstagePassItem(Item item) {
-        int newQuality;
-
-        if(sellInIsPassed(item)) {
-            newQuality = 0;
-        } else if(sellInIsInFiveOrLessDays(item)) {
-            newQuality = item.quality + 3;
-        } else if(sellInIsInTenOrLessDays(item)) {
-            newQuality = item.quality + 2;
-        } else {
-            newQuality = item.quality + 1;
-        }
-
-        if(isQualityGreaterThanFifty(newQuality)) {
-            newQuality = 50;
-        }
-
-        return new Item(item.name, item.sellIn - 1, newQuality);
+        return new BackstagePassItemStrategy().updateQuality(item);
     }
 
     public Item updateQualityForConjuredItem(Item item) {
-        int newQuality = sellInIsNotPassed(item) ? item.quality -2 : item.quality -4;
-
-        if(isQualityNegative(newQuality)) {
-            newQuality = 0;
-        }
-
-        return new Item(item.name, item.sellIn - 1, newQuality);
+        return new ConjuredItemStrategy().updateQuality(item);
     }
 
     public Item updateQualityForNormalItem(Item item) {
-        int newQuality = sellInIsNotPassed(item) ? item.quality - 1 : item.quality - 2;
-
-        if (isQualityNegative(newQuality)) {
-            newQuality = 0;
-        }
-
-        return new Item(item.name, item.sellIn - 1, newQuality);
+        return new NormalItemStrategy().updateQuality(item);
     }
-
-    private boolean isQualityNegative(int newQuality) {
-        return newQuality < 0;
-    }
-
-    private boolean sellInIsNotPassed(Item item) {
-        return item.sellIn > -1;
-    }
-
-    private boolean sellInIsPassed(Item item) {
-        return item.sellIn < 1;
-    }
-
-    private boolean sellInIsInTenOrLessDays(Item item) {
-        return item.sellIn < 11;
-    }
-
-    private boolean sellInIsInFiveOrLessDays(Item item) {
-        return item.sellIn < 6;
-    }
-
-    private boolean isQualityGreaterThanFifty(int newQuality) {
-        return newQuality > 50;
-    }
-
-
 
 
 }
