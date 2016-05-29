@@ -127,6 +127,46 @@ public class GildedRoseTest {
         assertEquals(50, app.items[0].quality);
     }
 
+    @Test
+    public void checkQualityForBackstagePasses10Daysleft() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(12, app.items[0].quality);
+    }
+
+    @Test
+    public void checkQualityForBackstagePasses5Daysleft() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(13, app.items[0].quality);
+    }
+
+    @Test
+    public void checkQualityForBackstagePasses0Daysleft() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    public void checkQualityForBackstagePassesAfterConcert() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", -1, 10) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(0, app.items[0].quality);
+    }
+
 
 
 
