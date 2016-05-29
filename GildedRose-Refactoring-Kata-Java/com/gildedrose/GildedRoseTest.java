@@ -107,6 +107,27 @@ public class GildedRoseTest {
         assertEquals(50, app.items[0].quality);
     }
 
+    @Test
+    public void sulfurasItemNeverBeSold() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 2, 50) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(2, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sulfurasItemNeverDecreaseQuality() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 2, 50) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(50, app.items[0].quality);
+    }
+
+
 
 
 
