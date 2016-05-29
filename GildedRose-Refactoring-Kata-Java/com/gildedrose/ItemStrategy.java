@@ -40,10 +40,20 @@ public class ItemStrategy {
         return new Item(item.name, item.sellIn - 1, newQuality);
     }
 
-    public Item updateQualityForNormalItem(Item item) {
-        int newQuality = sellInIsNotPassed(item) ? item.quality -1 : item.quality -2;
+    public Item updateQualityForConjuredItem(Item item) {
+        int newQuality = sellInIsNotPassed(item) ? item.quality -2 : item.quality -4;
 
         if(isQualityNegative(newQuality)) {
+            newQuality = 0;
+        }
+
+        return new Item(item.name, item.sellIn - 1, newQuality);
+    }
+
+    public Item updateQualityForNormalItem(Item item) {
+        int newQuality = sellInIsNotPassed(item) ? item.quality - 1 : item.quality - 2;
+
+        if (isQualityNegative(newQuality)) {
             newQuality = 0;
         }
 

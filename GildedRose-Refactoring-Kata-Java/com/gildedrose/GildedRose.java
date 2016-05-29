@@ -17,6 +17,8 @@ class GildedRose {
                 items[i] = itemStrategy.updateQualityForSulfurasItem(items[i]);
             } else if("Backstage passes to a TAFKAL80ETC concert".equals(items[i].name)) {
                 items[i] = itemStrategy.updateQualityForBackstagePassItem(items[i]);
+            } else if("Conjured".equals(items[i].name)) {
+                items[i] = itemStrategy.updateQualityForConjuredItem(items[i]);
             } else {
                 items[i] = itemStrategy.updateQualityForNormalItem(items[i]);
             }
