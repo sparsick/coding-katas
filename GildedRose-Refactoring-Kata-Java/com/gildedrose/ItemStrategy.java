@@ -46,5 +46,23 @@ public class ItemStrategy {
         return new Item(item.name, item.sellIn - 1, newQuality);
     }
 
+    public Item updateQualityForNormalItem(Item item) {
+        int newQuality;
+
+        if(item.sellIn > -1) {
+            newQuality = item.quality -1;
+        } else {
+            newQuality = item.quality -2;
+        }
+
+        if(newQuality <0 ) {
+            newQuality = 0;
+        }
+
+        return new Item(item.name, item.sellIn - 1, newQuality);
+    }
+
+
+
 
 }
