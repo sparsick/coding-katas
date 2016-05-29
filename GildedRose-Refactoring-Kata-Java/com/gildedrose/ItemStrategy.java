@@ -29,7 +29,11 @@ public class ItemStrategy {
     public Item updateQualityForBackstagePassItem(Item item) {
         int newQuality;
 
-        if(item.sellIn < 1 ) {
+        if(item.sellIn < 1) {
+            newQuality = 0;
+        } else if(item.sellIn < 6) {
+            newQuality = item.quality + 3;
+        } else if(item.sellIn < 11) {
             newQuality = item.quality + 2;
         } else {
             newQuality = item.quality + 1;

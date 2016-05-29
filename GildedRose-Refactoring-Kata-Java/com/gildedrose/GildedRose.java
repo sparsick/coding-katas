@@ -17,6 +17,9 @@ class GildedRose {
             } else if ("Sulfuras, Hand of Ragnaros".equals(items[i].name)) {
                 items[i] = itemStrategy.updateQualityForSulfurasItem(items[i]);
                 continue;
+            } else if("Backstage passes to a TAFKAL80ETC concert".equals(items[i].name)) {
+                items[i] = itemStrategy.updateQualityForBackstagePassItem(items[i]);
+                continue;
             }
 
             if (!items[i].name.equals("Aged Brie")
