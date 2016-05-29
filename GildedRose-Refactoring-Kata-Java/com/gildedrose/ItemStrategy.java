@@ -7,9 +7,9 @@ package com.gildedrose;
 public class ItemStrategy {
 
     public Item updateQualityForAgedBrieItem(Item item) {
-        int newQuality = item.sellIn < 1 ? item.quality + 2 : item.quality + 1;
+        int newQuality = sellInIsPassed(item) ? item.quality + 2 : item.quality + 1;
 
-        if(newQuality > 50) {
+        if(isQualityGreaterThanFifty(newQuality)) {
             newQuality = 50;
         }
 
@@ -23,17 +23,17 @@ public class ItemStrategy {
     public Item updateQualityForBackstagePassItem(Item item) {
         int newQuality;
 
-        if(item.sellIn < 1) {
+        if(sellInIsPassed(item)) {
             newQuality = 0;
-        } else if(item.sellIn < 6) {
+        } else if(sellInIsInFiveOrLessDays(item)) {
             newQuality = item.quality + 3;
-        } else if(item.sellIn < 11) {
+        } else if(sellInIsInTenOrLessDays(item)) {
             newQuality = item.quality + 2;
         } else {
             newQuality = item.quality + 1;
         }
 
-        if(newQuality > 50) {
+        if(isQualityGreaterThanFifty(newQuality)) {
             newQuality = 50;
         }
 
@@ -41,13 +41,37 @@ public class ItemStrategy {
     }
 
     public Item updateQualityForNormalItem(Item item) {
-        int newQuality = item.sellIn > -1 ? item.quality -1 : item.quality -2;
+        int newQuality = sellInIsNotPassed(item) ? item.quality -1 : item.quality -2;
 
-        if(newQuality < 0 ) {
+        if(isQualityNegative(newQuality)) {
             newQuality = 0;
         }
 
         return new Item(item.name, item.sellIn - 1, newQuality);
+    }
+
+    private boolean isQualityNegative(int newQuality) {
+        return newQuality < 0;
+    }
+
+    private boolean sellInIsNotPassed(Item item) {
+        return item.sellIn > -1;
+    }
+
+    private boolean sellInIsPassed(Item item) {
+        return item.sellIn < 1;
+    }
+
+    private boolean sellInIsInTenOrLessDays(Item item) {
+        return item.sellIn < 11;
+    }
+
+    private boolean sellInIsInFiveOrLessDays(Item item) {
+        return item.sellIn < 6;
+    }
+
+    private boolean isQualityGreaterThanFifty(int newQuality) {
+        return newQuality > 50;
     }
 
 
