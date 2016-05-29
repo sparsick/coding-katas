@@ -97,6 +97,16 @@ public class GildedRoseTest {
         assertEquals(3, app.items[0].quality);
     }
 
+    @Test
+    public void qualityIncreasedTwiceCannotBeGreaterThan50() {
+        Item[] items = new Item[] { new Item("Aged Brie", -2, 50) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(50, app.items[0].quality);
+    }
+
 
 
 
