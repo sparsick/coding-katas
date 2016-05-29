@@ -7,15 +7,33 @@ import org.junit.Test;
 public class GildedRoseTest {
 
     @Test
-    public void decreaseSellDateAndQualityCannotBeNegative() {
+    public void checkItemName() {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
         assertEquals("foo", app.items[0].name);
-        assertEquals(-1, app.items[0].sellIn);
+    }
+
+    @Test
+    public void qualityCannotBeNegative() {
+        Item[] items = new Item[] { new Item("foo", 0, 0) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
         assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    public void decreaseSellDate() {
+        Item[] items = new Item[] { new Item("foo", 0, 0) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(-1, app.items[0].sellIn);
     }
 
     @Test
