@@ -15,16 +15,23 @@ class BowlingFrame {
         
     }
 
-    private int calculatePoints(String roll) throws NumberFormatException {
-        if(roll.equals("X")) {
-            return 10;
+    private int calculatePoints(String roll) {
+        int points;
+        switch(roll) {
+            case "X":
+                points = 10;
+                break;
+            case "/":
+                points = 10 - firstRoll;
+                break;
+            case "-":
+                points = 0;
+                break;
+            default:
+                points = Integer.parseInt(roll);
         }
         
-        if(roll.equals("/")) {
-            return 10-firstRoll;
-        }
-        
-        return roll.equals("-") ? 0 : Integer.parseInt(roll);
+       return points;
     }
 
     int totalSum() {           
