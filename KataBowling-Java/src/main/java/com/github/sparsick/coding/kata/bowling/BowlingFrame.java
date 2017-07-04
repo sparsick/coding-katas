@@ -11,7 +11,7 @@ class BowlingFrame {
 
     BowlingFrame(String rolls) {
         firstRoll = calculatePoints(rolls.substring(0, 1));
-        secondRoll = firstRoll == 10 ? 0 : calculatePoints(rolls.substring(1, 2));
+        secondRoll = isStrike() ? 0 : calculatePoints(rolls.substring(1, 2));
         
     }
 
@@ -23,15 +23,26 @@ class BowlingFrame {
     }
 
     int totalSum() {
-        int simpleTotal = firstRoll + secondRoll;
-        if(firstRoll == 10) {
-            simpleTotal += nextBowlingFrame.firstRoll + nextBowlingFrame.secondRoll;
+        return simpleTotal() + strikeBonus();
+    }
+
+    private int strikeBonus() {
+        if(isStrike()) {
+            return nextBowlingFrame.firstRoll + nextBowlingFrame.secondRoll;
         }
-        return simpleTotal;
+        return 0;
     }
 
     void nextFrame(BowlingFrame bowlingFrame) {
         nextBowlingFrame = bowlingFrame;
+    }
+    
+    private int simpleTotal() {
+        return firstRoll + secondRoll;
+    }
+
+    private boolean isStrike() {
+        return firstRoll == 10;
     }
 
 }
