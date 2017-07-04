@@ -50,11 +50,23 @@ public class BowlingFrameTest {
     @Test
     public void totalSum_strike(){
         BowlingFrame frameUnderTest = new BowlingFrame("X");
-        
         frameUnderTest.nextFrame(new BowlingFrame("11"));
+        
         int totalSum = frameUnderTest.totalSum();
         
         assertThat(totalSum).isEqualTo(12);
+    }
+    
+    @Test
+    public void totalSum_twoStrike(){
+        BowlingFrame nextFrameWithStrike = new BowlingFrame("X");
+        nextFrameWithStrike.nextFrame(new BowlingFrame("11"));
+        BowlingFrame frameUnderTest = new BowlingFrame("X");
+        frameUnderTest.nextFrame(nextFrameWithStrike);
+        
+        int totalSum = frameUnderTest.totalSum();
+        
+        assertThat(totalSum).isEqualTo(21);
     }
 
 }
