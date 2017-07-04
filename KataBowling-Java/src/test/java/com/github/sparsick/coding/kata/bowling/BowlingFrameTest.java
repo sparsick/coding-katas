@@ -38,5 +38,13 @@ public class BowlingFrameTest {
         assertThat(totalSum).isEqualTo(1);
     }
 
+    @Test
+    public void totalSum_failToKnockAllWithTwoMissedRoll(){
+        BowlingFrame frameUnderTest = new BowlingFrame("--");
+        
+        int totalSum = frameUnderTest.totalSum();
+        
+        assertThat(totalSum).isEqualTo(0);
+    }
 
 }

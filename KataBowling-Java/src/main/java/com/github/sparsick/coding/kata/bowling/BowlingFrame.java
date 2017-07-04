@@ -10,7 +10,7 @@ class BowlingFrame {
 
     BowlingFrame(String rolls) {
         firstRoll = rolls.startsWith("-") ? 0 : Integer.parseInt(rolls.substring(0, 1));
-        secondRoll = Integer.parseInt(rolls.substring(1, 2));
+        secondRoll = rolls.endsWith("-") ? 0 : Integer.parseInt(rolls.substring(1, 2));
         
     }
 
