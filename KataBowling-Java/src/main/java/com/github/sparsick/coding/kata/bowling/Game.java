@@ -9,25 +9,16 @@ import java.util.List;
  */
 class Game {
     
-    private List<BowlingFrame> bowlingFrames = new ArrayList<>();
+    private final List<BowlingFrame> bowlingFrames = new ArrayList<>();
     
     
 
     int roll(String allRolls) {
         for (int i = 0; i < allRolls.length(); i++) {
-           
-            String frame = pickRollsForFrame(allRolls, i);
-            
-            BowlingFrame bowlingFrame = new BowlingFrame(frame);
-            
-            if(!bowlingFrames.isEmpty()) {
-                BowlingFrame lastFrame = bowlingFrames.remove(bowlingFrames.size()-1);
-                lastFrame.nextFrame(bowlingFrame);
-                bowlingFrames.add(lastFrame);
-            }
-            
-            
+            BowlingFrame bowlingFrame = new BowlingFrame(pickRollsForFrame(allRolls, i));
+            connectFrameWithLastFrame(bowlingFrame);
             bowlingFrames.add(bowlingFrame);
+          
             if(!bowlingFrame.isStrike()) {
                 i++;
             }
@@ -35,6 +26,14 @@ class Game {
         }
         
         return bowlingFrames.subList(0, 10).stream().mapToInt(bowlingFrame -> bowlingFrame.totalSum()).sum();
+    }
+
+    private void connectFrameWithLastFrame(BowlingFrame bowlingFrame) {
+        if(!bowlingFrames.isEmpty()) {
+            BowlingFrame lastFrame = bowlingFrames.remove(bowlingFrames.size()-1);
+            lastFrame.nextFrame(bowlingFrame);
+            bowlingFrames.add(lastFrame);
+        }
     }
 
     private String pickRollsForFrame(String allRolls, int i) {
