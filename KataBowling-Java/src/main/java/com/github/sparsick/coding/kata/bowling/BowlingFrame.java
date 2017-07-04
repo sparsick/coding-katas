@@ -26,12 +26,6 @@ class BowlingFrame {
         return simpleTotal() + strikeBonus();
     }
 
-    private int strikeBonus() {
-        if(isStrike()) {
-            return nextBowlingFrame.firstRoll + (nextBowlingFrame.isStrike() ?  nextBowlingFrame.nextBowlingFrame.firstRoll : nextBowlingFrame.secondRoll);
-        }
-        return 0;
-    }
 
     void nextFrame(BowlingFrame bowlingFrame) {
         nextBowlingFrame = bowlingFrame;
@@ -39,6 +33,14 @@ class BowlingFrame {
     
     private int simpleTotal() {
         return firstRoll + secondRoll;
+    }
+    
+    private int strikeBonus() {
+        if(isStrike()) {
+            int secondRollOfStrike = nextBowlingFrame.isStrike() ?  nextBowlingFrame.nextBowlingFrame.firstRoll : nextBowlingFrame.secondRoll;
+            return nextBowlingFrame.firstRoll + secondRollOfStrike;
+        }
+        return 0;
     }
 
     private boolean isStrike() {
