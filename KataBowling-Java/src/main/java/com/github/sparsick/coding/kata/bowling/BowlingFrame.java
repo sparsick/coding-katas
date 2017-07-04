@@ -11,7 +11,7 @@ class BowlingFrame {
 
     BowlingFrame(String rolls) {
         firstRoll = calculatePoints(rolls.substring(0, 1));
-        secondRoll = isStrike() || rolls.length() == 1 ? 0 : calculatePoints(rolls.substring(1, 2));
+        secondRoll = rolls.length() == 1 ? 0 : calculatePoints(rolls.substring(1, 2));
         
     }
 
