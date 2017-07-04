@@ -19,11 +19,16 @@ class BowlingFrame {
         if(roll.equals("X")) {
             return 10;
         }
+        
+        if(roll.equals("/")) {
+            return 10-firstRoll;
+        }
+        
         return roll.equals("-") ? 0 : Integer.parseInt(roll);
     }
 
     int totalSum() {
-        return simpleTotal() + strikeBonus();
+        return simpleTotal() + strikeBonus() + spareBonus();
     }
 
 
@@ -45,6 +50,18 @@ class BowlingFrame {
 
     private boolean isStrike() {
         return firstRoll == 10;
+    }
+
+    private int spareBonus() {
+        if(isSpare()) {
+            return nextBowlingFrame.firstRoll;
+        }
+        
+        return 0;
+    }
+
+    private boolean isSpare() {
+        return firstRoll != 10 && simpleTotal() == 10;
     }
 
 }

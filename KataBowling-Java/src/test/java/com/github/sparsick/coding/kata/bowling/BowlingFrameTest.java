@@ -68,5 +68,16 @@ public class BowlingFrameTest {
         
         assertThat(totalSum).isEqualTo(21);
     }
+    
+    
+    @Test
+    public void totalSum_spare(){
+        BowlingFrame frameUnderTest = new BowlingFrame("3/");
+        frameUnderTest.nextFrame(new BowlingFrame("11"));
+        
+        int totalSum = frameUnderTest.totalSum();
+        
+        assertThat(totalSum).isEqualTo(11);
+    }
 
 }
