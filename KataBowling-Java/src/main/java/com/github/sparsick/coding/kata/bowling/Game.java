@@ -16,7 +16,7 @@ class Game {
     int roll(String allRolls) {
         for (int i = 0; i < allRolls.length(); i++) {
            
-            String frame = pickRollsFor(allRolls, i);
+            String frame = pickRollsForFrame(allRolls, i);
             
             BowlingFrame bowlingFrame = new BowlingFrame(frame);
             
@@ -37,14 +37,22 @@ class Game {
         return bowlingFrames.subList(0, 10).stream().mapToInt(bowlingFrame -> bowlingFrame.totalSum()).sum();
     }
 
-    private String pickRollsFor(String allRolls, int i) {
+    private String pickRollsForFrame(String allRolls, int i) {
         char firstRoll = allRolls.charAt(i);
         String frame = Character.toString(firstRoll);
-        if(firstRoll != 'X' && i < allRolls.length() -1) {
+        if(isNotStrike(firstRoll) && rollIsNotTheLastOne(i, allRolls)) {
             char secondRoll = allRolls.charAt(i + 1);
             frame = frame.concat(Character.toString(secondRoll));
         }
         return frame;
+    }
+
+    private static boolean rollIsNotTheLastOne(int i, String allRolls) {
+        return i < allRolls.length() -1;
+    }
+
+    private static boolean isNotStrike(char firstRoll) {
+        return firstRoll != 'X';
     }
 
 }
