@@ -14,6 +14,10 @@ class Game {
     int roll(String allRolls) {
         fillBowlingFrameList(allRolls);
         
+        return calculateTotalSumOfGame();
+    }
+
+    private int calculateTotalSumOfGame() {
         return bowlingFrames.subList(0, 10).stream().mapToInt(bowlingFrame -> bowlingFrame.totalSum()).sum();
     }
 
@@ -47,11 +51,11 @@ class Game {
         return frame;
     }
 
-    private static boolean rollIsNotTheLastOne(int i, String allRolls) {
+    private boolean rollIsNotTheLastOne(int i, String allRolls) {
         return i < allRolls.length() -1;
     }
 
-    private static boolean isNotStrike(char firstRoll) {
+    private boolean isNotStrike(char firstRoll) {
         return firstRoll != 'X';
     }
 
