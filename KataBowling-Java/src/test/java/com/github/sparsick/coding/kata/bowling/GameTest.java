@@ -28,5 +28,15 @@ public class GameTest {
         assertThat(totalSum).isEqualTo(90);
 
     }
+    
+    @Test
+    public void roll_twentyOneRollsWithTenSpares() {
+        Game gameUnderTest = new Game();
+
+        int totalSum = gameUnderTest.roll("5/5/5/5/5/5/5/5/5/5/5");
+
+        assertThat(totalSum).isEqualTo(150);
+
+    }
 
 }

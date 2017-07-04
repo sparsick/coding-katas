@@ -19,7 +19,7 @@ class Game {
             char firstRoll = allRolls.charAt(i);
             String frame = Character.toString(firstRoll);
             
-            if(firstRoll != 'X') {
+            if(firstRoll != 'X' && i < allRolls.length() -1) {
                 i++;
                 char secondRoll = allRolls.charAt(i);
                 frame = frame.concat(Character.toString(secondRoll));
