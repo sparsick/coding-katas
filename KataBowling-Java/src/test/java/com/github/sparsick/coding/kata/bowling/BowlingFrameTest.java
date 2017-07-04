@@ -28,6 +28,15 @@ public class BowlingFrameTest {
 
         assertThat(totalSum).isEqualTo(4);
     }
+    
+    @Test
+    public void totalSum_failToKnockAllWithAMissAsFirstRoll(){
+        BowlingFrame frameUnderTest = new BowlingFrame("-1");
+        
+        int totalSum = frameUnderTest.totalSum();
+        
+        assertThat(totalSum).isEqualTo(1);
+    }
 
 
 }
