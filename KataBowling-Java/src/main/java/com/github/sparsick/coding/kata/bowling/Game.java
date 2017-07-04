@@ -10,10 +10,14 @@ import java.util.List;
 class Game {
     
     private final List<BowlingFrame> bowlingFrames = new ArrayList<>();
-    
-    
 
     int roll(String allRolls) {
+        fillBowlingFrameList(allRolls);
+        
+        return bowlingFrames.subList(0, 10).stream().mapToInt(bowlingFrame -> bowlingFrame.totalSum()).sum();
+    }
+
+    private void fillBowlingFrameList(String allRolls) {
         for (int i = 0; i < allRolls.length(); i++) {
             BowlingFrame bowlingFrame = new BowlingFrame(pickRollsForFrame(allRolls, i));
             connectFrameWithLastFrame(bowlingFrame);
@@ -22,10 +26,7 @@ class Game {
             if(!bowlingFrame.isStrike()) {
                 i++;
             }
-            
         }
-        
-        return bowlingFrames.subList(0, 10).stream().mapToInt(bowlingFrame -> bowlingFrame.totalSum()).sum();
     }
 
     private void connectFrameWithLastFrame(BowlingFrame bowlingFrame) {
