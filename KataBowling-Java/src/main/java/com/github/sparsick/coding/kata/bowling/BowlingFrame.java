@@ -56,7 +56,7 @@ class BowlingFrame {
         return strikeBonus;
     }
 
-    private boolean isStrike() {
+    boolean isStrike() {
         return firstRoll == 10;
     }
 

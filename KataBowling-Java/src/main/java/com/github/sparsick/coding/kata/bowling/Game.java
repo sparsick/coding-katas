@@ -16,14 +16,7 @@ class Game {
     int roll(String allRolls) {
         for (int i = 0; i < allRolls.length(); i++) {
            
-            char firstRoll = allRolls.charAt(i);
-            String frame = Character.toString(firstRoll);
-            
-            if(firstRoll != 'X' && i < allRolls.length() -1) {
-                i++;
-                char secondRoll = allRolls.charAt(i);
-                frame = frame.concat(Character.toString(secondRoll));
-            }
+            String frame = pickRollsFor(allRolls, i);
             
             BowlingFrame bowlingFrame = new BowlingFrame(frame);
             
@@ -35,9 +28,23 @@ class Game {
             
             
             bowlingFrames.add(bowlingFrame);
+            if(!bowlingFrame.isStrike()) {
+                i++;
+            }
+            
         }
         
         return bowlingFrames.subList(0, 10).stream().mapToInt(bowlingFrame -> bowlingFrame.totalSum()).sum();
+    }
+
+    private String pickRollsFor(String allRolls, int i) {
+        char firstRoll = allRolls.charAt(i);
+        String frame = Character.toString(firstRoll);
+        if(firstRoll != 'X' && i < allRolls.length() -1) {
+            char secondRoll = allRolls.charAt(i + 1);
+            frame = frame.concat(Character.toString(secondRoll));
+        }
+        return frame;
     }
 
 }
