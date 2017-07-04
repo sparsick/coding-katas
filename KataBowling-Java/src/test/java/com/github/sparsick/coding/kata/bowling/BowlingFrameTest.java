@@ -20,6 +20,14 @@ public class BowlingFrameTest {
     }
 
 
+    @Test
+    public void totalSum_secondFailToKnockAll() {
+        BowlingFrame frameUnderTest = new BowlingFrame("22");
+
+        int totalSum = frameUnderTest.totalSum();
+
+        assertThat(totalSum).isEqualTo(4);
+    }
 
 
 }
