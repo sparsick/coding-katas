@@ -27,7 +27,7 @@ class BowlingFrame {
         return roll.equals("-") ? 0 : Integer.parseInt(roll);
     }
 
-    int totalSum() {
+    int totalSum() {           
         return simpleTotal() + strikeBonus() + spareBonus();
     }
 
@@ -53,11 +53,7 @@ class BowlingFrame {
     }
 
     private int spareBonus() {
-        if(isSpare()) {
-            return nextBowlingFrame.firstRoll;
-        }
-        
-        return 0;
+        return isSpare() ? nextBowlingFrame.firstRoll : 0;
     }
 
     private boolean isSpare() {
