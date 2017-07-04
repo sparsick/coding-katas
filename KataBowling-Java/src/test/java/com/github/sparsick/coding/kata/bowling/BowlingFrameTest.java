@@ -46,5 +46,15 @@ public class BowlingFrameTest {
         
         assertThat(totalSum).isEqualTo(0);
     }
+    
+    @Test
+    public void totalSum_strike(){
+        BowlingFrame frameUnderTest = new BowlingFrame("X");
+        
+        frameUnderTest.nextFrame(new BowlingFrame("11"));
+        int totalSum = frameUnderTest.totalSum();
+        
+        assertThat(totalSum).isEqualTo(12);
+    }
 
 }
