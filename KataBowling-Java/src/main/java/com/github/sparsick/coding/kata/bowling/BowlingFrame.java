@@ -41,11 +41,12 @@ class BowlingFrame {
     }
     
     private int strikeBonus() {
+        int strikeBonus = 0;
         if(isStrike()) {
             int secondRollOfStrike = nextBowlingFrame.isStrike() ?  nextBowlingFrame.nextBowlingFrame.firstRoll : nextBowlingFrame.secondRoll;
-            return nextBowlingFrame.firstRoll + secondRollOfStrike;
+            strikeBonus =  nextBowlingFrame.firstRoll + secondRollOfStrike;
         }
-        return 0;
+        return strikeBonus;
     }
 
     private boolean isStrike() {
