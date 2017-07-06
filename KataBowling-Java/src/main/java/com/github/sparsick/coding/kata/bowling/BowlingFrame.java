@@ -13,6 +13,27 @@ class BowlingFrame {
     BowlingFrame() {
     }
 
+    void roll(String roll) {
+        if (firstRoll == null) {
+            firstRoll = calculatePoints(roll);
+            secondRoll = isStrike() ? 0 : null;
+        } else {
+            secondRoll = calculatePoints(roll);
+        }
+    }
+
+    int totalSum() {
+        return simpleTotal() + strikeBonus() + spareBonus();
+    }
+
+    void nextFrame(BowlingFrame bowlingFrame) {
+        nextBowlingFrame = bowlingFrame;
+    }
+
+    boolean isStrike() {
+        return firstRoll == 10;
+    }
+
     private int calculatePoints(String roll) {
         int points;
         switch (roll) {
@@ -32,23 +53,6 @@ class BowlingFrame {
         return points;
     }
 
-    void roll(String roll) {
-        if(firstRoll == null) {
-            firstRoll = calculatePoints(roll);
-            secondRoll = isStrike() ? 0 : null;
-        } else {
-            secondRoll = calculatePoints(roll);
-        }
-    }
-
-    int totalSum() {
-        return simpleTotal() + strikeBonus() + spareBonus();
-    }
-
-    void nextFrame(BowlingFrame bowlingFrame) {
-        nextBowlingFrame = bowlingFrame;
-    }
-
     private int simpleTotal() {
         return firstRoll + secondRoll;
     }
@@ -60,10 +64,6 @@ class BowlingFrame {
             strikeBonus = nextBowlingFrame.firstRoll + secondRollOfStrike;
         }
         return strikeBonus;
-    }
-
-    boolean isStrike() {
-        return firstRoll == 10;
     }
 
     private int spareBonus() {
