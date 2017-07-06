@@ -2,22 +2,20 @@ package com.github.sparsick.coding.kata.bowling;
 
 /**
  *
- * 
+ *
  */
 class BowlingFrame {
-    private int firstRoll;
-    private final int secondRoll;
+
+    private Integer firstRoll;
+    private Integer secondRoll;
     private BowlingFrame nextBowlingFrame;
 
-    BowlingFrame(String rolls) {
-        firstRoll = calculatePoints(rolls.substring(0, 1));
-        secondRoll = rolls.length() == 1 ? 0 : calculatePoints(rolls.substring(1, 2));
-        
+    BowlingFrame() {
     }
 
     private int calculatePoints(String roll) {
         int points;
-        switch(roll) {
+        switch (roll) {
             case "X":
                 points = 10;
                 break;
@@ -30,28 +28,36 @@ class BowlingFrame {
             default:
                 points = Integer.parseInt(roll);
         }
-        
-       return points;
+
+        return points;
     }
 
-    int totalSum() {           
+    void roll(String roll) {
+        if(firstRoll == null) {
+            firstRoll = calculatePoints(roll);
+            secondRoll = isStrike() ? 0 : null;
+        } else {
+            secondRoll = calculatePoints(roll);
+        }
+    }
+
+    int totalSum() {
         return simpleTotal() + strikeBonus() + spareBonus();
     }
-
 
     void nextFrame(BowlingFrame bowlingFrame) {
         nextBowlingFrame = bowlingFrame;
     }
-    
+
     private int simpleTotal() {
         return firstRoll + secondRoll;
     }
-    
+
     private int strikeBonus() {
         int strikeBonus = 0;
-        if(isStrike()) {
-            int secondRollOfStrike = nextBowlingFrame.isStrike() ?  nextBowlingFrame.nextBowlingFrame.firstRoll : nextBowlingFrame.secondRoll;
-            strikeBonus =  nextBowlingFrame.firstRoll + secondRollOfStrike;
+        if (isStrike()) {
+            int secondRollOfStrike = nextBowlingFrame.isStrike() ? nextBowlingFrame.nextBowlingFrame.firstRoll : nextBowlingFrame.secondRoll;
+            strikeBonus = nextBowlingFrame.firstRoll + secondRollOfStrike;
         }
         return strikeBonus;
     }

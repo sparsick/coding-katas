@@ -23,8 +23,19 @@ class Game {
 
     private void fillBowlingFrameList(String allRolls) {
         for (int i = 0; i < allRolls.length(); i++) {
-            BowlingFrame bowlingFrame = new BowlingFrame(pickRollsForFrame(allRolls, i));
+            BowlingFrame bowlingFrame = new BowlingFrame();
+            
+            char firstRoll = allRolls.charAt(i);
+            bowlingFrame.roll(Character.toString(firstRoll));
+            
+            if(!bowlingFrame.isStrike() && rollIsNotTheLastOne(i, allRolls)) {
+                char secondRoll = allRolls.charAt(i + 1);
+                bowlingFrame.roll(Character.toString(secondRoll));
+                
+            }
+            
             connectFrameWithLastFrame(bowlingFrame);
+            
             bowlingFrames.add(bowlingFrame);
           
             if(!bowlingFrame.isStrike()) {
@@ -41,22 +52,9 @@ class Game {
         }
     }
 
-    private String pickRollsForFrame(String allRolls, int i) {
-        char firstRoll = allRolls.charAt(i);
-        String frame = Character.toString(firstRoll);
-        if(isNotStrike(firstRoll) && rollIsNotTheLastOne(i, allRolls)) {
-            char secondRoll = allRolls.charAt(i + 1);
-            frame = frame.concat(Character.toString(secondRoll));
-        }
-        return frame;
-    }
-
     private boolean rollIsNotTheLastOne(int i, String allRolls) {
         return i < allRolls.length() -1;
     }
 
-    private boolean isNotStrike(char firstRoll) {
-        return firstRoll != 'X';
-    }
 
 }
