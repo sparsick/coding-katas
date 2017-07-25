@@ -25,5 +25,17 @@ public class RoverTest {
     }
     
 
+     @Test
+    public void initialRover_southDirection(){
+       Rover roverUnderTest = new Rover(new Position(10,10), Direction.SOUTH);
+       
+       Position currentPosition = roverUnderTest.currentPosition();
+       Direction currentDirection = roverUnderTest.currentDirection();
+       
+       assertThat(currentPosition.x).isEqualTo(10);
+       assertThat(currentPosition.y).isEqualTo(10);
+       assertThat(currentDirection).isEqualTo(Direction.SOUTH);
+    }
+    
 
 }
