@@ -47,9 +47,9 @@ class Rover {
                 case SOUTH:
                     position.y++;
                     break;
-//                case WEST:
-//                    position.x--;
-//                    break;
+                case WEST:
+                    position.x++;
+                    break;
 //                case EAST:
 //                    position.x++;
 //                    break;

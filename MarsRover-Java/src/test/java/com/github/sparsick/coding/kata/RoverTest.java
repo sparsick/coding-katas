@@ -128,17 +128,17 @@ public class RoverTest {
         assertThat(currentPosition.x).isEqualTo(10);
         assertThat(currentPosition.y).isEqualTo(11);
     }
-//
-//    @Test
-//    public void commads_singleForwardMoveCommandWithWestDirection() {
-//        Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
-//
-//        roverUnderTest.commands("f");
-//
-//        Position currentPosition = roverUnderTest.currentPosition();
-//        assertThat(currentPosition.x).isEqualTo(9);
-//        assertThat(currentPosition.y).isEqualTo(10);
-//    }
+
+    @Test
+    public void commads_singleBackwardMoveCommandWithWestDirection() {
+        Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
+
+        roverUnderTest.commands("b");
+
+        Position currentPosition = roverUnderTest.currentPosition();
+        assertThat(currentPosition.x).isEqualTo(11);
+        assertThat(currentPosition.y).isEqualTo(10);
+    }
 //
 //    @Test
 //    public void commads_singleForwardMoveCommandWithEastDirection() {
