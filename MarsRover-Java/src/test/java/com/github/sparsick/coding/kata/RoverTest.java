@@ -1,5 +1,6 @@
 package com.github.sparsick.coding.kata;
 
+import static com.github.sparsick.coding.kata.Direction.EAST;
 import static com.github.sparsick.coding.kata.Direction.NORTH;
 import static com.github.sparsick.coding.kata.Direction.SOUTH;
 import static com.github.sparsick.coding.kata.Direction.WEST;
@@ -83,8 +84,8 @@ public class RoverTest {
         assertThat(currentPosition.x).isEqualTo(10);
         assertThat(currentPosition.y).isEqualTo(9);
     }
-    
-      @Test
+
+    @Test
     public void commads_singleForwardMoveCommandWithWestDirection() {
         Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
 
@@ -94,5 +95,16 @@ public class RoverTest {
         assertThat(currentPosition.x).isEqualTo(9);
         assertThat(currentPosition.y).isEqualTo(10);
     }
-    
+
+    @Test
+    public void commads_singleForwardMoveCommandWithEastDirection() {
+        Rover roverUnderTest = new Rover(new Position(10, 10), EAST);
+
+        roverUnderTest.commands("f");
+
+        Position currentPosition = roverUnderTest.currentPosition();
+        assertThat(currentPosition.x).isEqualTo(11);
+        assertThat(currentPosition.y).isEqualTo(10);
+    }
+
 }
