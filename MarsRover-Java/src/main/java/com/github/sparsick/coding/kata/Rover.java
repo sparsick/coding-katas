@@ -1,5 +1,7 @@
 package com.github.sparsick.coding.kata;
 
+import static com.github.sparsick.coding.kata.Direction.SOUTH;
+
 /**
  *
  *
@@ -23,7 +25,11 @@ class Rover {
     }
 
     void commands(String commands) {
-        position.y++;
+        if (SOUTH.equals(direction)) {
+            position.y--;
+        } else {
+            position.y++;
+        }
     }
 
 }
