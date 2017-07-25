@@ -25,37 +25,45 @@ class Rover {
     void commands(String commands) {
 
         if ("f".equals(commands)) {
-            switch (direction) {
-                case NORTH:
-                    position.y++;
-                    break;
-                case SOUTH:
-                    position.y--;
-                    break;
-                case WEST:
-                    position.x--;
-                    break;
-                case EAST:
-                    position.x++;
-                    break;
-            }
+            moveForward();
         } else {
-             switch (direction) {
-                case NORTH:
-                    position.y--;
-                    break;
-                case SOUTH:
-                    position.y++;
-                    break;
-                case WEST:
-                    position.x++;
-                    break;
-                case EAST:
-                    position.x--;
-                    break;
-            }
+            moveBackward();
         }
 
+    }
+
+    private void moveBackward() {
+        switch (direction) {
+            case NORTH:
+                position.y--;
+                break;
+            case SOUTH:
+                position.y++;
+                break;
+            case WEST:
+                position.x++;
+                break;
+            case EAST:
+                position.x--;
+                break;
+        }
+    }
+
+    private void moveForward() {
+        switch (direction) {
+            case NORTH:
+                position.y++;
+                break;
+            case SOUTH:
+                position.y--;
+                break;
+            case WEST:
+                position.x--;
+                break;
+            case EAST:
+                position.x++;
+                break;
+        }
     }
 
 }
