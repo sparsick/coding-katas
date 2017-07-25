@@ -1,5 +1,6 @@
 package com.github.sparsick.coding.kata;
 
+import static com.github.sparsick.coding.kata.Direction.NORTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
@@ -57,5 +58,16 @@ public class RoverTest {
         assertThat(currentPosition.x).isEqualTo(10);
         assertThat(currentPosition.y).isEqualTo(10);
         assertThat(currentDirection).isEqualTo(Direction.EAST);
+    }
+    
+    @Test
+    public void commads_singleForwardMoveCommandWithNorthDirection(){
+        Rover roverUnderTest = new Rover(new Position(10,10), NORTH);
+        
+        roverUnderTest.commands("f");
+        
+        Position currentPosition = roverUnderTest.currentPosition();
+        assertThat(currentPosition.x).isEqualTo(10);
+        assertThat(currentPosition.y).isEqualTo(11);
     }
 }

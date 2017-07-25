@@ -22,4 +22,8 @@ class Rover {
         return direction;
     }
 
+    void commands(String commands) {
+        position.y++;
+    }
+
 }
