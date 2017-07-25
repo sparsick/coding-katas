@@ -1,7 +1,6 @@
 package com.github.sparsick.coding.kata;
 
 import static com.github.sparsick.coding.kata.Direction.EAST;
-import static com.github.sparsick.coding.kata.Direction.SOUTH;
 import static com.github.sparsick.coding.kata.Direction.WEST;
 
 /**
@@ -27,15 +26,19 @@ class Rover {
     }
 
     void commands(String commands) {
-        if (SOUTH.equals(direction)) {
-            position.y--;
-        } else if (WEST.equals(direction)){
-            position.x--;
-        } else if (EAST.equals(direction)) {
-            position.x++;
-        }
-        else {
-            position.y++;
+        switch(direction) {
+            case NORTH:
+                position.y++;
+                break;
+            case SOUTH:
+                position.y--;
+                break;
+            case WEST:
+                position.x--;
+                break;
+            case EAST:
+                position.x++;
+                break;
         }
     }
 
