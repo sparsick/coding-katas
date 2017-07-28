@@ -27,6 +27,10 @@ class Rover {
         if ("l".equals(commands)) {
             direction = direction.turnLeft();
         }
+        
+        if("r".equals(commands)) {
+            direction = direction.turnRight();
+        }
 
         if ("f".equals(commands)) {
             position = position.moveForward(direction);
