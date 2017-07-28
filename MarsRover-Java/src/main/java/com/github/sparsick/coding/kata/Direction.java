@@ -21,4 +21,20 @@ enum Direction {
                 return null;
         }
     }
+
+    Direction turnRight() {
+        switch (this) {
+            case NORTH:
+                return EAST;
+            case WEST:
+                return NORTH;
+            case SOUTH:
+                return WEST;
+            case EAST:
+                return SOUTH;
+            default:
+                return null;
+        }
+    }
+
 }
