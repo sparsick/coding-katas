@@ -21,8 +21,8 @@ public class RoverTest {
         Position currentPosition = roverUnderTest.currentPosition();
         Direction currentDirection = roverUnderTest.currentDirection();
 
-        assertThat(currentPosition.x).isEqualTo(0);
-        assertThat(currentPosition.y).isEqualTo(0);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(0);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(0);
         assertThat(currentDirection).isEqualTo(Direction.NORTH);
 
     }
@@ -34,8 +34,8 @@ public class RoverTest {
         Position currentPosition = roverUnderTest.currentPosition();
         Direction currentDirection = roverUnderTest.currentDirection();
 
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
         assertThat(currentDirection).isEqualTo(Direction.SOUTH);
     }
 
@@ -46,8 +46,8 @@ public class RoverTest {
         Position currentPosition = roverUnderTest.currentPosition();
         Direction currentDirection = roverUnderTest.currentDirection();
 
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
         assertThat(currentDirection).isEqualTo(Direction.WEST);
     }
 
@@ -58,8 +58,8 @@ public class RoverTest {
         Position currentPosition = roverUnderTest.currentPosition();
         Direction currentDirection = roverUnderTest.currentDirection();
 
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
         assertThat(currentDirection).isEqualTo(Direction.EAST);
     }
 
@@ -70,8 +70,8 @@ public class RoverTest {
         roverUnderTest.commands("f");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(11);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(11);
     }
 
     @Test
@@ -81,8 +81,8 @@ public class RoverTest {
         roverUnderTest.commands("f");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(9);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(9);
     }
 
     @Test
@@ -92,8 +92,8 @@ public class RoverTest {
         roverUnderTest.commands("f");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(9);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(9);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
     }
 
     @Test
@@ -103,8 +103,8 @@ public class RoverTest {
         roverUnderTest.commands("f");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(11);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(11);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
     }
 
     @Test
@@ -114,8 +114,8 @@ public class RoverTest {
         roverUnderTest.commands("b");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(9);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(9);
     }
 
     @Test
@@ -125,8 +125,8 @@ public class RoverTest {
         roverUnderTest.commands("b");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(10);
-        assertThat(currentPosition.y).isEqualTo(11);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(11);
     }
 
     @Test
@@ -136,8 +136,8 @@ public class RoverTest {
         roverUnderTest.commands("b");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(11);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(11);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
     }
 
     @Test
@@ -147,8 +147,8 @@ public class RoverTest {
         roverUnderTest.commands("b");
 
         Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.x).isEqualTo(9);
-        assertThat(currentPosition.y).isEqualTo(10);
+        assertThat(currentPosition.getxCoordinate()).isEqualTo(9);
+        assertThat(currentPosition.getyCoordinate()).isEqualTo(10);
     }
 
     @Test

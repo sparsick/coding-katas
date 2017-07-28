@@ -6,17 +6,17 @@ package com.github.sparsick.coding.kata;
  */
 public class Position {
     
-    int x;
-    int y;
+    private int xCoordinate;
+    private int yCoordinate;
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position(int xCoordinate, int yCoordinate) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
     }
 
     public Position moveBackward(Direction facingDirection) {
-        int newX = x;
-        int newY = y;
+        int newX = xCoordinate;
+        int newY = yCoordinate;
         switch (facingDirection) {
             case NORTH:
                 newY--;
@@ -35,8 +35,8 @@ public class Position {
     }
 
     public Position moveForward(Direction facingDirection) {
-        int newX = x;
-        int newY = y;
+        int newX = xCoordinate;
+        int newY = yCoordinate;
         
         switch (facingDirection) {
             case NORTH:
@@ -54,6 +54,14 @@ public class Position {
         }
         
         return new Position(newX, newY);
+    }
+
+    public int getxCoordinate() {
+        return xCoordinate;
+    }
+
+    public int getyCoordinate() {
+        return yCoordinate;
     }
 
 }
