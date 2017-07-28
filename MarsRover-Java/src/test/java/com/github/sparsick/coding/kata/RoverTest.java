@@ -160,4 +160,14 @@ public class RoverTest {
         Direction currentDirection = roverUnderTest.currentDirection();
         assertThat(currentDirection).isEqualTo(WEST);
     }
+    
+        @Test
+    public void commads_singleLeftTurnCommandWithWestDirection() {
+        Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
+
+        roverUnderTest.commands("l");
+
+        Direction currentDirection = roverUnderTest.currentDirection();
+        assertThat(currentDirection).isEqualTo(SOUTH);
+    }
 }

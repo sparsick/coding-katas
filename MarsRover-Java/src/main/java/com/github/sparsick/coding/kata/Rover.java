@@ -1,5 +1,6 @@
 package com.github.sparsick.coding.kata;
 
+import static com.github.sparsick.coding.kata.Direction.SOUTH;
 import static com.github.sparsick.coding.kata.Direction.WEST;
 
 /**
@@ -76,6 +77,9 @@ class Rover {
         switch(direction) {
             case NORTH:
                 direction = WEST;
+                break;
+            case WEST:
+                direction = SOUTH;
                 break;
         }
     }
