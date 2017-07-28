@@ -14,4 +14,24 @@ public class Position {
         this.y = y;
     }
 
+    public Position moveBackward(Direction facingDirection) {
+        int newX = x;
+        int newY = y;
+        switch (facingDirection) {
+            case NORTH:
+                newY--;
+                break;
+            case SOUTH:
+                newY++;
+                break;
+            case WEST:
+                newX++;
+                break;
+            case EAST:
+                newX--;
+                break;
+        }
+        return new Position (newX, newY);
+    }
+
 }

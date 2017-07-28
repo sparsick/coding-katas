@@ -11,7 +11,7 @@ import static com.github.sparsick.coding.kata.Direction.WEST;
  */
 class Rover {
 
-    private final Position position;
+    private Position position;
     private Direction direction;
 
     Rover(Position position, Direction direction) {
@@ -36,27 +36,11 @@ class Rover {
         if ("f".equals(commands)) {
             moveForward();
         } else {
-            moveBackward();
+            position = position.moveBackward(direction);
         }
 
     }
 
-    private void moveBackward() {
-        switch (direction) {
-            case NORTH:
-                position.y--;
-                break;
-            case SOUTH:
-                position.y++;
-                break;
-            case WEST:
-                position.x++;
-                break;
-            case EAST:
-                position.x--;
-                break;
-        }
-    }
 
     private void moveForward() {
         switch (direction) {
