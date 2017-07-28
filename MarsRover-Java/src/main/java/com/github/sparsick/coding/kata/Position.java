@@ -34,4 +34,26 @@ public class Position {
         return new Position (newX, newY);
     }
 
+    public Position moveForward(Direction facingDirection) {
+        int newX = x;
+        int newY = y;
+        
+        switch (facingDirection) {
+            case NORTH:
+                newY++;
+                break;
+            case SOUTH:
+                newY--;
+                break;
+            case WEST:
+                newX--;
+                break;
+            case EAST:
+                newX++;
+                break;
+        }
+        
+        return new Position(newX, newY);
+    }
+
 }

@@ -28,39 +28,21 @@ class Rover {
     }
 
     void commands(String commands) {
-        
-        if("l".equals(commands)) {
+
+        if ("l".equals(commands)) {
             turnLeft();
         }
 
         if ("f".equals(commands)) {
-            moveForward();
+            position = position.moveForward(direction);
         } else {
             position = position.moveBackward(direction);
         }
 
     }
 
-
-    private void moveForward() {
-        switch (direction) {
-            case NORTH:
-                position.y++;
-                break;
-            case SOUTH:
-                position.y--;
-                break;
-            case WEST:
-                position.x--;
-                break;
-            case EAST:
-                position.x++;
-                break;
-        }
-    }
-
     private void turnLeft() {
-        switch(direction) {
+        switch (direction) {
             case NORTH:
                 direction = WEST;
                 break;
