@@ -50,5 +50,44 @@ public class PositionTest {
 
         assertThat(newPosition).isEqualTo(new Position(11, 10));
     }
+    
+    @Test
+    public void moveForward_facingDirectionNorth() {
+        Position positionUnderTest = new Position(10, 10);
+
+        Position newPosition = positionUnderTest.moveForward(Direction.NORTH);
+
+        assertThat(newPosition).isEqualTo(new Position(10, 11));
+    }
+
+    @Test
+    public void moveForward_facingDirectionEast() {
+        Position positionUnderTest = new Position(10, 10);
+
+        Position newPosition = positionUnderTest.moveForward(Direction.EAST);
+
+        assertThat(newPosition).isEqualTo(new Position(11, 10));
+    }
+
+    @Test
+    public void moveForward_facingDirectionSouth() {
+        Position positionUnderTest = new Position(10, 10);
+
+        Position newPosition = positionUnderTest.moveForward(Direction.SOUTH);
+
+        assertThat(newPosition).isEqualTo(new Position(10, 9));
+    }
+
+    @Test
+    public void moveForward_facingDirectionWest() {
+        Position positionUnderTest = new Position(10, 10);
+
+        Position newPosition = positionUnderTest.moveForward(Direction.WEST);
+
+        assertThat(newPosition).isEqualTo(new Position(9, 10));
+    }
+    
+    
+ 
 
 }

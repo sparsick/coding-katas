@@ -63,30 +63,9 @@ public class RoverTest {
         assertThat(currentDirection).isEqualTo(Direction.EAST);
     }
 
-    @Test
-    public void commads_singleForwardMoveCommandWithNorthDirection() {
-        Rover roverUnderTest = new Rover(new Position(10, 10), NORTH);
-
-        roverUnderTest.commands("f");
-
-        Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
-        assertThat(currentPosition.getyCoordinate()).isEqualTo(11);
-    }
 
     @Test
-    public void commads_singleForwardMoveCommandWithSouthhDirection() {
-        Rover roverUnderTest = new Rover(new Position(10, 10), SOUTH);
-
-        roverUnderTest.commands("f");
-
-        Position currentPosition = roverUnderTest.currentPosition();
-        assertThat(currentPosition.getxCoordinate()).isEqualTo(10);
-        assertThat(currentPosition.getyCoordinate()).isEqualTo(9);
-    }
-
-    @Test
-    public void commads_singleForwardMoveCommandWithWestDirection() {
+    public void commads_singleForwardMoveCommand() {
         Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
 
         roverUnderTest.commands("f");
