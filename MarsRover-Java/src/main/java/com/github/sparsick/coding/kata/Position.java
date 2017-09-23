@@ -64,4 +64,35 @@ public class Position {
         return yCoordinate;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.xCoordinate;
+        hash = 23 * hash + this.yCoordinate;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Position other = (Position) obj;
+        if (this.xCoordinate != other.xCoordinate) {
+            return false;
+        }
+        if (this.yCoordinate != other.yCoordinate) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+
 }
