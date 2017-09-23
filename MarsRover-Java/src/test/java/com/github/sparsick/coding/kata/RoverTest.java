@@ -98,4 +98,27 @@ public class RoverTest {
         Direction currentDirection = roverUnderTest.currentDirection();
         assertThat(currentDirection).isEqualTo(SOUTH);
     }
+
+    @Test
+    public void commands_commandChainOnlyMoving() {
+        Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
+
+        roverUnderTest.commands("ff");
+
+        Position currentPosition = roverUnderTest.currentPosition();
+        assertThat(currentPosition).isEqualTo(new Position(8, 10));
+
+    }
+
+    @Test
+    public void commands_commandChainTurningAndMoving() {
+        Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
+
+        roverUnderTest.commands("fl");
+
+        Position currentPosition = roverUnderTest.currentPosition();
+        Direction currentDirection = roverUnderTest.currentDirection();
+        assertThat(currentPosition).isEqualTo(new Position(9, 10));
+        assertThat(currentDirection).isEqualTo(SOUTH);
+    }
 }
