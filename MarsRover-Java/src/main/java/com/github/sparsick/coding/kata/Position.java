@@ -56,14 +56,6 @@ public class Position {
         return new Position(newX, newY);
     }
 
-    public int getxCoordinate() {
-        return xCoordinate;
-    }
-
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
