@@ -56,4 +56,40 @@ public class DirectionTest {
         assertThat(newDirection).isEqualTo(SOUTH);
     }
 
+    @Test
+    public void turnLeft_startingDirectionWest() {
+        Direction directionUnderTest = WEST;
+
+        Direction newDirection = directionUnderTest.turnLeft();
+
+        assertThat(newDirection).isEqualTo(SOUTH);
+    }
+
+    @Test
+    public void turnLeft_startingDirectionNorth() {
+        Direction directionUnderTest = NORTH;
+
+        Direction newDirection = directionUnderTest.turnLeft();
+
+        assertThat(newDirection).isEqualTo(WEST);
+    }
+
+    @Test
+    public void turnLeft_startingDirectionEast() {
+        Direction directionUnderTest = EAST;
+
+        Direction newDirection = directionUnderTest.turnLeft();
+
+        assertThat(newDirection).isEqualTo(NORTH);
+    }
+
+    @Test
+    public void turnLeft_startingDirectionSouth() {
+        Direction directionUnderTest = SOUTH;
+
+        Direction newDirection = directionUnderTest.turnLeft();
+
+        assertThat(newDirection).isEqualTo(EAST);
+    }
+
 }

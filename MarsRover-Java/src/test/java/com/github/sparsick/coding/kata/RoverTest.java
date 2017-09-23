@@ -152,37 +152,7 @@ public class RoverTest {
     }
 
     @Test
-    public void commads_singleLeftTurnCommandWithNorthDirection() {
-        Rover roverUnderTest = new Rover(new Position(10, 10), NORTH);
-
-        roverUnderTest.commands("l");
-
-        Direction currentDirection = roverUnderTest.currentDirection();
-        assertThat(currentDirection).isEqualTo(WEST);
-    }
-
-    @Test
-    public void commads_singleLeftTurnCommandWithWestDirection() {
-        Rover roverUnderTest = new Rover(new Position(10, 10), WEST);
-
-        roverUnderTest.commands("l");
-
-        Direction currentDirection = roverUnderTest.currentDirection();
-        assertThat(currentDirection).isEqualTo(SOUTH);
-    }
-
-    @Test
-    public void commads_singleLeftTurnCommandWithSouthDirection() {
-        Rover roverUnderTest = new Rover(new Position(10, 10), SOUTH);
-
-        roverUnderTest.commands("l");
-
-        Direction currentDirection = roverUnderTest.currentDirection();
-        assertThat(currentDirection).isEqualTo(EAST);
-    }
-
-    @Test
-    public void commads_singleLeftTurnCommandWithEastDirection() {
+    public void commads_singleLeftTurnCommand() {
         Rover roverUnderTest = new Rover(new Position(10, 10), EAST);
 
         roverUnderTest.commands("l");
