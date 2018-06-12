@@ -1,1 +1,3 @@
-/KataBowling-Java/target/
+target/
+.idea
+nbproject/

@@ -121,4 +121,17 @@ public class RoverTest {
         assertThat(currentPosition).isEqualTo(new Position(9, 10));
         assertThat(currentDirection).isEqualTo(SOUTH);
     }
+    
+    @Test
+    public void commands_overBoundaries(){
+        Rover roverUnderTest = new Rover(new Position(10,10), EAST, new PlanetMap(new Boundary(10,10)));
+        
+        roverUnderTest.commands("f");
+        
+        Position currentPosition = roverUnderTest.currentPosition();
+        
+        assertThat(currentPosition).isEqualTo(new Position(0, 10));
+        
+    }
+    
 }
