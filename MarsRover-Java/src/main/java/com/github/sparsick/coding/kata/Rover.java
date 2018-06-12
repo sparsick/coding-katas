@@ -47,8 +47,7 @@ class Rover {
                     break;
             }
         }
-        planetMap.checkNew
-
+        
     }
 
 }
