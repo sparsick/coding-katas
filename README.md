@@ -1,5 +1,8 @@
 # coding-katas
 
+## lift-kata-java
+Result in Java of [The Lift Kata](http://kata-log.rocks/lift-kata)
+
 ## KataBowling-Java
 Result in Java of  [KataBowling](http://www.codingdojo.org/kata/Bowling/).
 
