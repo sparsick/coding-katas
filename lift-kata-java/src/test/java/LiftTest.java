@@ -13,12 +13,14 @@ class LiftTest {
 
     @Mock
     private FloorRequestQueue floorRequestQueueMock;
+    @Mock
+    private Door doorMock;
     private Lift liftUnderTest;
 
 
     @BeforeEach
     void setUp() {
-        liftUnderTest = new Lift(floorRequestQueueMock);
+        liftUnderTest = new Lift(floorRequestQueueMock, doorMock);
     }
 
     @Test
@@ -31,7 +33,7 @@ class LiftTest {
 
     @Test
     void callLift_forFloor2_liftIsOnFirstFloor() {
-        liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock);
+        liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock, doorMock );
 
         LiftStatus response = liftUnderTest.call(new FloorRequest(2));
 
@@ -68,7 +70,7 @@ class LiftTest {
 
     @Test
     void nextFloor_floorRequestQueueNotEmpty_currentDirectionIsDown(){
-        liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock);
+        liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock, doorMock );
 
         when(floorRequestQueueMock.hasRequests()).thenReturn(true);
         when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(0));
@@ -76,6 +78,16 @@ class LiftTest {
         LiftStatus nextFloor = liftUnderTest.nextFloor();
 
         assertThat(nextFloor).isEqualTo(new LiftStatus(0));
+    }
+
+    @Test
+    void nextFloor_doorIsClosed(){
+        when(floorRequestQueueMock.hasRequests()).thenReturn(true);
+        when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(2));
+
+        liftUnderTest.nextFloor();
+
+        verify(doorMock).isClosed();
     }
 
     @Test

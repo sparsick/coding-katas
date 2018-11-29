@@ -1,16 +1,18 @@
 public class Lift {
 
 
+    private final Door door;
     private int currentFloor;
     private FloorRequestQueue floorRequestQueue;
 
-    public Lift(FloorRequestQueue floorRequestQueue) {
-        this(new DefaultConfiguration(), floorRequestQueue);
+    public Lift(FloorRequestQueue floorRequestQueue, Door door) {
+        this(new DefaultConfiguration(), floorRequestQueue, door);
     }
 
-    public Lift(LiftConfiguration liftConfiguration, FloorRequestQueue floorRequestQueue) {
+    public Lift(LiftConfiguration liftConfiguration, FloorRequestQueue floorRequestQueue, Door door) {
         this.floorRequestQueue = floorRequestQueue;
         this.currentFloor = liftConfiguration.startInFloor();
+        this.door = door;
     }
 
     public LiftStatus call(FloorRequest floorRequest) {
@@ -19,6 +21,7 @@ public class Lift {
     }
 
     public LiftStatus nextFloor() {
+        door.isClosed();
         if(floorRequestQueue.hasRequests()){
             FloorRequest floorRequest = floorRequestQueue.poll();
             currentFloor = floorRequest.floorNumber();
