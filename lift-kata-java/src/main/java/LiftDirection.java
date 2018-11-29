@@ -1,3 +1,3 @@
 public enum LiftDirection {
-    UP;
+    DOWN,UP;
 }
