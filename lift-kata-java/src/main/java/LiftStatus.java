@@ -3,11 +3,9 @@ import java.util.Objects;
 
 public class LiftStatus {
     private final int currentFloor;
-    private final LiftDirection liftDirection;
 
-    public LiftStatus(int currentFloor, LiftDirection liftDirection) {
+    public LiftStatus(int currentFloor) {
         this.currentFloor = currentFloor;
-        this.liftDirection = liftDirection;
     }
 
     @Override
@@ -17,12 +15,11 @@ public class LiftStatus {
         if (o == null || getClass() != o.getClass())
             return false;
         LiftStatus that = (LiftStatus) o;
-        return currentFloor == that.currentFloor &&
-                liftDirection == that.liftDirection;
+        return currentFloor == that.currentFloor;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(currentFloor, liftDirection);
+        return Objects.hash(currentFloor);
     }
 }

@@ -2,7 +2,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,25 +24,23 @@ class LiftTest {
     @Test
     void callLift_forFloor2_liftIsOnGroundFloor() {
 
-        LiftStatus response = liftUnderTest.call(new FloorRequest(2, LiftDirection.UP));
+        LiftStatus response = liftUnderTest.call(new FloorRequest(2));
 
-        assertThat(response).hasFieldOrPropertyWithValue("currentFloor", 0)
-                .hasFieldOrPropertyWithValue("liftDirection", LiftDirection.UP);
+        assertThat(response).hasFieldOrPropertyWithValue("currentFloor", 0);
     }
 
     @Test
     void callLift_forFloor2_liftIsOnFirstFloor() {
         liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock);
 
-        LiftStatus response = liftUnderTest.call(new FloorRequest(2, LiftDirection.UP));
+        LiftStatus response = liftUnderTest.call(new FloorRequest(2));
 
-        assertThat(response).hasFieldOrPropertyWithValue("currentFloor", 1)
-                .hasFieldOrPropertyWithValue("liftDirection", LiftDirection.DOWN);
+        assertThat(response).hasFieldOrPropertyWithValue("currentFloor", 1);
     }
 
     @Test
     void callLift_forFloor2_floorRequestIsAddedToQueue() {
-        FloorRequest expectedFloorRequest = new FloorRequest(2, LiftDirection.UP);
+        FloorRequest expectedFloorRequest = new FloorRequest(2);
 
         liftUnderTest.call(expectedFloorRequest);
 
@@ -56,17 +53,17 @@ class LiftTest {
 
         LiftStatus nextFloor = liftUnderTest.nextFloor();
 
-        assertThat(nextFloor).isEqualTo(new LiftStatus(0, LiftDirection.UP));
+        assertThat(nextFloor).isEqualTo(new LiftStatus(0));
     }
 
     @Test
     void nextFloor_floorRequestQueueNotEmpty_currentDirectionIsUp(){
         when(floorRequestQueueMock.hasRequests()).thenReturn(true);
-        when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(2,LiftDirection.DOWN));
+        when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(2));
 
         LiftStatus nextFloor = liftUnderTest.nextFloor();
 
-        assertThat(nextFloor).isEqualTo(new LiftStatus(2, LiftDirection.UP));
+        assertThat(nextFloor).isEqualTo(new LiftStatus(2));
     }
 
     @Test
@@ -74,11 +71,11 @@ class LiftTest {
         liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock);
 
         when(floorRequestQueueMock.hasRequests()).thenReturn(true);
-        when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(0,LiftDirection.UP));
+        when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(0));
 
         LiftStatus nextFloor = liftUnderTest.nextFloor();
 
-        assertThat(nextFloor).isEqualTo(new LiftStatus(0, LiftDirection.DOWN));
+        assertThat(nextFloor).isEqualTo(new LiftStatus(0));
     }
 
 
@@ -87,11 +84,6 @@ class LiftTest {
             @Override
             public int startInFloor(){
                 return 1;
-            }
-
-            @Override
-            public LiftDirection startLiftDirection(){
-                return LiftDirection.DOWN;
             }
         };
     }
