@@ -1,10 +1,9 @@
-import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class FloorRequestQueue {
 
-    private Queue<FloorRequest> queue= new LinkedList<>();
+    private Queue<FloorRequest> queue = new LinkedList<>();
 
     public void add(FloorRequest floorRequest) {
         queue.add(floorRequest);
@@ -15,6 +14,6 @@ public class FloorRequestQueue {
     }
 
     public FloorRequest poll() {
-        return null;
+        return queue.poll();
     }
 }

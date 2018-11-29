@@ -24,5 +24,12 @@ class FloorRequestQueueTest {
 
     @Test
     void poll() {
+        FloorRequest expectedFloorRequest = new FloorRequest(2);
+        queueUnderTest.add(expectedFloorRequest);
+
+        FloorRequest floorRequest = queueUnderTest.poll();
+
+        assertThat(floorRequest).isEqualTo(expectedFloorRequest);
+        assertThat(queueUnderTest.hasRequests()).isFalse();
     }
 }
