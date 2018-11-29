@@ -15,14 +15,22 @@ public class Lift {
         this.currentLiftDirection = liftConfiguration.startLiftDirection();
     }
 
-    public LiftResponse call(FloorRequest floorRequest) {
+    public LiftStatus call(FloorRequest floorRequest) {
         floorRequestQueue.add(floorRequest);
-        return new LiftResponse(currentFloor, currentLiftDirection);
+        return new LiftStatus(currentFloor, currentLiftDirection);
     }
 
-    void initStatus(int currentFloor, LiftDirection liftDirection) {
-        this.currentFloor = currentFloor;
-        this.currentLiftDirection = liftDirection;
+    public LiftStatus nextFloor() {
+        if(floorRequestQueue.hasRequests()){
+            FloorRequest floorRequest = floorRequestQueue.poll();
+            currentLiftDirection = findNewLiftDirection(floorRequest);
+            currentFloor = floorRequest.floorNumber();
+        }
+        return new LiftStatus(currentFloor, currentLiftDirection);
+    }
+
+    private LiftDirection findNewLiftDirection(FloorRequest floorRequest) {
+        return currentFloor - floorRequest.floorNumber() > 0 ? LiftDirection.DOWN : LiftDirection.UP;
     }
 
     private static class DefaultConfiguration implements LiftConfiguration {

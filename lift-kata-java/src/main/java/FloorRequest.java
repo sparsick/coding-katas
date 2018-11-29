@@ -6,4 +6,8 @@ public class FloorRequest {
         this.floorNumber = floorNumber;
         this.liftDirection = liftDirection;
     }
+
+    public int floorNumber() {
+        return floorNumber;
+    }
 }
