@@ -1,10 +1,17 @@
-public class FloorRequestQueue {
-    public void add(FloorRequest floorRequest) {
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
 
+public class FloorRequestQueue {
+
+    private Queue<FloorRequest> queue= new LinkedList<>();
+
+    public void add(FloorRequest floorRequest) {
+        queue.add(floorRequest);
     }
 
     public boolean hasRequests() {
-        return false;
+        return !queue.isEmpty();
     }
 
     public FloorRequest poll() {
