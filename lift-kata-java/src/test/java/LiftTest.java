@@ -31,7 +31,7 @@ class LiftTest {
 
     @Test
     void callLift_forFloor2_liftIsOnFirstFloor() {
-        liftUnderTest.initStatus(1, LiftDirection.DOWN);
+        liftUnderTest = new Lift(liftStartAtFirstFloor(), floorRequestQueueMock);
 
         LiftResponse response = liftUnderTest.call(new FloorRequest(2, LiftDirection.UP));
 
@@ -39,11 +39,25 @@ class LiftTest {
                 .hasFieldOrPropertyWithValue("liftDirection", LiftDirection.DOWN);
     }
 
+    private LiftConfiguration liftStartAtFirstFloor() {
+        return new LiftConfiguration() {
+            @Override
+            public int startInFloor(){
+                return 1;
+            }
+
+            @Override
+            public LiftDirection startLiftDirection(){
+                return LiftDirection.DOWN;
+            }
+        };
+    }
+
     @Test
     void callLift_forFloor2_floorRequestIsAddedToQueue() {
         FloorRequest expectedFloorRequest = new FloorRequest(2, LiftDirection.UP);
 
-        LiftResponse response = liftUnderTest.call(expectedFloorRequest);
+        liftUnderTest.call(expectedFloorRequest);
 
         verify(floorRequestQueueMock).add(expectedFloorRequest);
     }
