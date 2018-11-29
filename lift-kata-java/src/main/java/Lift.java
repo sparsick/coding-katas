@@ -26,6 +26,10 @@ public class Lift {
         return new LiftStatus(currentFloor);
     }
 
+    public void selectFloor(FloorRequest floorRequest) {
+        floorRequestQueue.add(floorRequest);
+    }
+
     private static class DefaultConfiguration implements LiftConfiguration {
         @Override
         public int startInFloor() {

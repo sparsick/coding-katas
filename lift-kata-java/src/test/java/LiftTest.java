@@ -78,6 +78,14 @@ class LiftTest {
         assertThat(nextFloor).isEqualTo(new LiftStatus(0));
     }
 
+    @Test
+    void selectFloor_addNewRequestInQueue(){
+        FloorRequest expectedFloorRequest = new FloorRequest(2);
+        liftUnderTest.selectFloor(expectedFloorRequest);
+
+        verify(floorRequestQueueMock).add(expectedFloorRequest);
+    }
+
 
     private LiftConfiguration liftStartAtFirstFloor() {
         return new LiftConfiguration() {
