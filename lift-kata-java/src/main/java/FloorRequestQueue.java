@@ -6,7 +6,9 @@ public class FloorRequestQueue {
     private Queue<FloorRequest> queue = new LinkedList<>();
 
     public void add(FloorRequest floorRequest) {
-        queue.add(floorRequest);
+        if (!queue.contains(floorRequest)) {
+            queue.add(floorRequest);
+        }
     }
 
     public boolean hasRequests() {

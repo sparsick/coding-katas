@@ -21,7 +21,6 @@ class FloorRequestQueueTest {
         assertThat(queueUnderTest.hasRequests()).isTrue();
     }
 
-
     @Test
     void poll() {
         FloorRequest expectedFloorRequest = new FloorRequest(2);
@@ -30,6 +29,16 @@ class FloorRequestQueueTest {
         FloorRequest floorRequest = queueUnderTest.poll();
 
         assertThat(floorRequest).isEqualTo(expectedFloorRequest);
+        assertThat(queueUnderTest.hasRequests()).isFalse();
+    }
+
+    @Test
+    void add_duplicatesAreIgnored() {
+        queueUnderTest.add(new FloorRequest(2));
+        queueUnderTest.add(new FloorRequest(2));
+
+        queueUnderTest.poll();
+
         assertThat(queueUnderTest.hasRequests()).isFalse();
     }
 }
