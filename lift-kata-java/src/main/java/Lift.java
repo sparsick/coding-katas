@@ -1,8 +1,9 @@
 public class Lift {
 
 
-    private final Door door;
     private int currentFloor;
+
+    private final Door door;
     private FloorRequestQueue floorRequestQueue;
 
     public Lift(FloorRequestQueue floorRequestQueue, Door door) {
@@ -21,10 +22,13 @@ public class Lift {
     }
 
     public LiftStatus nextFloor() {
-        door.isClosed();
         if(floorRequestQueue.hasRequests()){
             FloorRequest floorRequest = floorRequestQueue.poll();
             currentFloor = floorRequest.floorNumber();
+
+            if(door.isClosed()){
+                door.close();
+            }
         }
         return new LiftStatus(currentFloor);
     }

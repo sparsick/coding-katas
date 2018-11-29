@@ -81,13 +81,24 @@ class LiftTest {
     }
 
     @Test
-    void nextFloor_doorIsClosed(){
+    void nextFloor_checkTheDoor(){
         when(floorRequestQueueMock.hasRequests()).thenReturn(true);
         when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(2));
 
         liftUnderTest.nextFloor();
 
         verify(doorMock).isClosed();
+    }
+
+    @Test
+    void nextFloor_checkTheDoor_doorWillBeClosed(){
+        when(floorRequestQueueMock.hasRequests()).thenReturn(true);
+        when(floorRequestQueueMock.poll()).thenReturn(new FloorRequest(2));
+        when(doorMock.isClosed()).thenReturn(true);
+
+        liftUnderTest.nextFloor();
+
+        verify(doorMock).close();
     }
 
     @Test
