@@ -1,0 +1,27 @@
+name: MavenBuild
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  openjdk:
+    strategy:
+      matrix:
+        jdk: [ jdk-8-slim, jdk-11-slim ]
+    name: "OpenJDK ${{ matrix.jdk }}"
+    runs-on: ubuntu-latest
+    container: "maven:3.6.3-${{ matrix.jdk }}"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ matrix.jdk }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-${{ matrix.jdk }}
+      - name: 'Build'
+        run: bash run-ci.sh

@@ -1,7 +1,0 @@
-language: java
-jdk:
-  - openjdk11
-script: ./run-ci.sh
-notifications:
-  email:
-    on_success: always
