@@ -1,4 +1,5 @@
 # coding-katas
+![Build Status](https://github.com/sparsick/coding-katas/workflows/MavenBuild/badge.svg)
 
 ## KataBowling-Java
 Result in Java of  [KataBowling](http://www.codingdojo.org/kata/Bowling/).
