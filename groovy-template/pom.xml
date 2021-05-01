@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
-        <groovy.version>3.0.7</groovy.version>
+        <groovy.version>3.0.8</groovy.version>
     </properties>
 
     <dependencies>
