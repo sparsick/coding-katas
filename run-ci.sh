@@ -1,7 +1,7 @@
 #!/bin/bash
 cd groovy-template
-mvn install
+mvn verify
 cd ../java-template
-mvn install
+mvn verify
 cd ../kotlin-template
-mvn install
+mvn verify

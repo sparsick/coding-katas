@@ -11,7 +11,7 @@
     <name>Maven Template Project for Coding Kata</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <mockito.core.version>3.11.2</mockito.core.version>
